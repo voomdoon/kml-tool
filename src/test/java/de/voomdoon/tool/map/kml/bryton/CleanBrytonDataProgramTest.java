@@ -13,7 +13,7 @@ import de.voomdoon.util.kml.KmlUtil;
  *
  * @author André Schulz
  *
- * @since DOCME add inception version number
+ * @since 0.1.0
  */
 class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
 

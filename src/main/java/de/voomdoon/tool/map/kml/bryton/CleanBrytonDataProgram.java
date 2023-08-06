@@ -16,14 +16,14 @@ public class CleanBrytonDataProgram {
 	 * 
 	 * @param args
 	 * @throws IOException
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	public static void main(String[] args) throws IOException {
 		new CleanBrytonDataProgram(args).run();
 	}
 
 	/**
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	private String fileName;
 
@@ -31,7 +31,7 @@ public class CleanBrytonDataProgram {
 	 * DOCME add JavaDoc for constructor CleanBrytonDataProgram
 	 * 
 	 * @param args
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	public CleanBrytonDataProgram(String[] args) {
 		fileName = args[0];
@@ -42,7 +42,7 @@ public class CleanBrytonDataProgram {
 	 * 
 	 * @throws IOException
 	 * 
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	private void run() throws IOException {
 		CleanBrytonData.run(fileName);
