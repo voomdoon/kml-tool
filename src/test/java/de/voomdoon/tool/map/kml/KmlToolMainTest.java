@@ -5,7 +5,7 @@ package de.voomdoon.tool.map.kml;
  *
  * @author André Schulz
  *
- * @since DOCME add inception version number
+ * @since 0.1.0
  */
 class KmlToolMainTest {
 

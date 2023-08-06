@@ -1,8 +1,7 @@
-package de.voomdoon.tool.map.kml;
+package de.voomdoon.tool.map.kml.bryton;
 
 import java.util.Map;
 
-import de.voomdoon.tool.map.kml.bryton.BrytonMain;
 import de.voomdoon.util.cli.MainBase;
 
 /**
@@ -12,7 +11,7 @@ import de.voomdoon.util.cli.MainBase;
  *
  * @since 0.1.0
  */
-public class KmlToolMain extends MainBase {
+public class BrytonMain extends MainBase {
 
 	/**
 	 * DOCME add JavaDoc for method main
@@ -21,17 +20,17 @@ public class KmlToolMain extends MainBase {
 	 * @since 0.1.0
 	 */
 	public static void main(String[] args) {
-		new KmlToolMain(args, Map.of("bryton", BrytonMain.class));
+		new BrytonMain(args, Map.of("clean", CleanBrytonData.class));
 	}
 
 	/**
-	 * DOCME add JavaDoc for constructor KmlToolMain
+	 * DOCME add JavaDoc for constructor BrytonMain
 	 * 
 	 * @param args
 	 * @param subMains
 	 * @since 0.1.0
 	 */
-	protected KmlToolMain(String[] args, Map<String, Class<?>> subMains) {
+	protected BrytonMain(String[] args, Map<String, Class<?>> subMains) {
 		super(args, subMains);
 	}
 
@@ -40,6 +39,6 @@ public class KmlToolMain extends MainBase {
 	 */
 	@Override
 	protected String getName() {
-		return "KML-Tool";
+		return "Bryton";
 	}
 }

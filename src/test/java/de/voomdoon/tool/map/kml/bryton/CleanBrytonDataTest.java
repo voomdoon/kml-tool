@@ -25,6 +25,36 @@ import de.voomdoon.util.kml.KmlUtil;
 class CleanBrytonDataTest extends LoggingCheckingTestBase {
 
 	/**
+	 * DOCME add JavaDoc for method assertPlacemark
+	 * 
+	 * @param actual
+	 * @since 0.1.0
+	 */
+	static void assertPlacemark(Kml actual) {
+		assertThat(actual.getFeature()).isInstanceOf(Document.class);
+		Document document = (Document) actual.getFeature();
+		assertThat(document.getFeature()).hasSize(1);
+		assertThat(document.getFeature().get(0)).isInstanceOf(Placemark.class);
+	}
+
+	/**
+	 * DOCME add JavaDoc for method assumePlacemark
+	 * 
+	 * @param actual
+	 * @return
+	 * @since 0.1.0
+	 */
+	private static Placemark assumePlacemark(Kml actual) {
+		try {
+			assertPlacemark(actual);
+		} catch (AssertionError e) {
+			Assumptions.abort(e.getMessage());
+		}
+
+		return (Placemark) ((Document) actual.getFeature()).getFeature().get(0);
+	}
+
+	/**
 	 * @throws IOException
 	 * @since 0.1.0
 	 */
@@ -32,7 +62,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_LookAt() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual).extracting(Document::getAbstractView).isNull();
@@ -46,7 +76,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_name() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual).extracting(Document::getName).isEqualTo("2023-07-26T07:47:59Z");
@@ -60,7 +90,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_snippet() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual).extracting(Document::getSnippetd).isNull();
@@ -74,7 +104,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_StyleSelector() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual.getStyleSelector()).hasSize(1);
@@ -92,7 +122,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_noFolders() throws IOException {
 		logTestStart();
 
-		Kml actual = run("kml/Bryton.xml");
+		Kml actual = run("kml/Bryton.kml");
 
 		assertPlacemark(actual);
 	}
@@ -107,7 +137,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Placemark_name() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual).extracting(Placemark::getName).isEqualTo("2023-07-26T07:47:59Z");
@@ -123,7 +153,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Placemark_style() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual.getStyleUrl()).isEqualTo("#default-path");
@@ -140,42 +170,12 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Placemark_TimeSpan() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.xml");
+		Kml kml = run("kml/Bryton.kml");
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual.getTimePrimitive()).isInstanceOf(TimeSpan.class);
 		TimeSpan timeSpan = (TimeSpan) actual.getTimePrimitive();
 		assertThat(timeSpan.getBegin()).isEqualTo("2023-07-26T07:47:59Z");
-	}
-
-	/**
-	 * DOCME add JavaDoc for method assertPlacemark
-	 * 
-	 * @param actual
-	 * @since 0.1.0
-	 */
-	private void assertPlacemark(Kml actual) {
-		assertThat(actual.getFeature()).isInstanceOf(Document.class);
-		Document document = (Document) actual.getFeature();
-		assertThat(document.getFeature()).hasSize(1);
-		assertThat(document.getFeature().get(0)).isInstanceOf(Placemark.class);
-	}
-
-	/**
-	 * DOCME add JavaDoc for method assumePlacemark
-	 * 
-	 * @param actual
-	 * @return
-	 * @since 0.1.0
-	 */
-	private Placemark assumePlacemark(Kml actual) {
-		try {
-			assertPlacemark(actual);
-		} catch (AssertionError e) {
-			Assumptions.abort(e.getMessage());
-		}
-
-		return (Placemark) ((Document) actual.getFeature()).getFeature().get(0);
 	}
 
 	/**
