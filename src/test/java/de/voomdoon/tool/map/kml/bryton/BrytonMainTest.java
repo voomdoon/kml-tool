@@ -13,18 +13,25 @@ import de.voomdoon.util.kml.KmlUtil;
  *
  * @author André Schulz
  *
- * @since 0.1.0
+ * @since DOCME add inception version number
  */
-class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
+class BrytonMainTest extends LoggingCheckingTestBase {
 
+	/**
+	 * DOCME add JavaDoc for method testClean
+	 * 
+	 * @throws IOException
+	 * 
+	 * @since DOCME add inception version number
+	 */
 	@Test
-	void test() throws IOException {
+	void test_clean() throws IOException {
 		logTestStart();
 
 		String fileName = getTempDirectory() + "/file.kml";
 		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", fileName);
 
-		CleanBrytonDataProgram.main(new String[] { fileName });
+		BrytonMain.main(new String[] { "clean", fileName });
 
 		CleanBrytonDataTestUtil.assertPlacemark(KmlUtil.readKml(fileName));
 	}

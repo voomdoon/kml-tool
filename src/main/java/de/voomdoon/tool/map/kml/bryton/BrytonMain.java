@@ -20,7 +20,7 @@ public class BrytonMain extends MainBase {
 	 * @since 0.1.0
 	 */
 	public static void main(String[] args) {
-		new BrytonMain(args, Map.of("clean", CleanBrytonData.class));
+		new BrytonMain(args, Map.of("clean", CleanBrytonDataProgram.class)).run();
 	}
 
 	/**

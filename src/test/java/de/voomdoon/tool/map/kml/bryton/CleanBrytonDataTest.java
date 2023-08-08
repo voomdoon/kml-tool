@@ -25,19 +25,6 @@ import de.voomdoon.util.kml.KmlUtil;
 class CleanBrytonDataTest extends LoggingCheckingTestBase {
 
 	/**
-	 * DOCME add JavaDoc for method assertPlacemark
-	 * 
-	 * @param actual
-	 * @since 0.1.0
-	 */
-	static void assertPlacemark(Kml actual) {
-		assertThat(actual.getFeature()).isInstanceOf(Document.class);
-		Document document = (Document) actual.getFeature();
-		assertThat(document.getFeature()).hasSize(1);
-		assertThat(document.getFeature().get(0)).isInstanceOf(Placemark.class);
-	}
-
-	/**
 	 * DOCME add JavaDoc for method assumePlacemark
 	 * 
 	 * @param actual
@@ -46,7 +33,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	 */
 	private static Placemark assumePlacemark(Kml actual) {
 		try {
-			assertPlacemark(actual);
+			CleanBrytonDataTestUtil.assertPlacemark(actual);
 		} catch (AssertionError e) {
 			Assumptions.abort(e.getMessage());
 		}
@@ -124,7 +111,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 
 		Kml actual = run("kml/Bryton.kml");
 
-		assertPlacemark(actual);
+		CleanBrytonDataTestUtil.assertPlacemark(actual);
 	}
 
 	/**

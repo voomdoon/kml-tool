@@ -21,7 +21,7 @@ public class KmlToolMain extends MainBase {
 	 * @since 0.1.0
 	 */
 	public static void main(String[] args) {
-		new KmlToolMain(args, Map.of("bryton", BrytonMain.class));
+		new KmlToolMain(args, Map.of("bryton", BrytonMain.class)).run();
 	}
 
 	/**
