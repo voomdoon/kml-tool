@@ -5,8 +5,6 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 import de.voomdoon.testing.logging.tests.LoggingCheckingTestBase;
-import de.voomdoon.testing.tests.FileTestingUtil;
-import de.voomdoon.util.kml.KmlUtil;
 
 /**
  * DOCME add JavaDoc for
@@ -17,15 +15,16 @@ import de.voomdoon.util.kml.KmlUtil;
  */
 class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
 
+	/**
+	 * DOCME add JavaDoc for method test
+	 * 
+	 * @throws IOException
+	 * @since DOCME add inception version number
+	 */
 	@Test
 	void test() throws IOException {
 		logTestStart();
 
-		String fileName = getTempDirectory() + "/file.kml";
-		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", fileName);
-
-		CleanBrytonDataProgram.main(new String[] { fileName });
-
-		CleanBrytonDataTestUtil.assertPlacemark(KmlUtil.readKml(fileName));
+		CleanBrytonDataTestUtil.run(fileName -> CleanBrytonDataProgram.main(new String[] { fileName }), getTempDirectory());
 	}
 }
