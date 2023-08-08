@@ -12,6 +12,7 @@ import de.micromata.opengis.kml.v_2_2_0.Style;
 import de.micromata.opengis.kml.v_2_2_0.TimeSpan;
 import de.voomdoon.util.kml.KmlStyleUtil;
 import de.voomdoon.util.kml.KmlUtil;
+import lombok.experimental.UtilityClass;
 
 /**
  * DOCME add JavaDoc for
@@ -20,6 +21,7 @@ import de.voomdoon.util.kml.KmlUtil;
  *
  * @since 0.1.0
  */
+@UtilityClass
 public class CleanBrytonData {
 
 	/**
