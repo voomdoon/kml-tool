@@ -76,8 +76,8 @@ public class CleanBrytonData {
 	private static void improveBrytonData(Kml kml, Placemark placemark, Folder folder) {
 		Document document = (Document) kml.getFeature();
 
-		updateDocument(document, placemark);
-		updatePlacemark(kml, placemark, folder);
+		updateDocument(document);
+		updatePlacemark(placemark, folder);
 		document.setName(placemark.getName());
 		removeFolders(kml);
 		setStyle(placemark, document);
@@ -124,13 +124,11 @@ public class CleanBrytonData {
 	/**
 	 * DOCME add JavaDoc for method setName
 	 * 
-	 * @param kml
-	 * 
 	 * @param placemark
 	 * @param folder
 	 * @since 0.1.0
 	 */
-	private static void setName(Kml kml, Placemark placemark, Folder folder) {
+	private static void setName(Placemark placemark, Folder folder) {
 		placemark.setName(((TimeSpan) folder.getTimePrimitive()).getBegin());
 	}
 
@@ -149,18 +147,24 @@ public class CleanBrytonData {
 	 * DOCME add JavaDoc for method updateDocument
 	 * 
 	 * @param document
-	 * @param placemark
 	 * @since 0.1.0
 	 */
-	private static void updateDocument(Document document, Placemark placemark) {
+	private static void updateDocument(Document document) {
 		document.setSnippetd(null);
 		document.setAbstractView(null);
 		document.setStyleSelector(null);
 	}
 
-	private static void updatePlacemark(Kml kml, Placemark placemark, Folder folder) {
+	/**
+	 * DOCME add JavaDoc for method updatePlacemark
+	 * 
+	 * @param placemark
+	 * @param folder
+	 * @since 0.1.0
+	 */
+	private static void updatePlacemark(Placemark placemark, Folder folder) {
 		moveTimeSpan(placemark, folder);
-		setName(kml, placemark, folder);
+		setName(placemark, folder);
 		placemark.setStyleUrl(null);
 	}
 }
