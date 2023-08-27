@@ -115,7 +115,15 @@ public class CleanBrytonData {
 	 * @since 0.1.0
 	 */
 	private static void run(Kml kml) {
-		Folder folder = (Folder) ((Folder) ((Document) kml.getFeature()).getFeature().get(0)).getFeature().get(0);
+		Document document = (Document) kml.getFeature();
+
+		if (document.getFeature().isEmpty()) {
+			return;// XXX how?
+		} else if (!(document.getFeature().get(0) instanceof Folder)) {
+			return;
+		}
+
+		Folder folder = (Folder) ((Folder) document.getFeature().get(0)).getFeature().get(0);
 		Placemark placemark = getBrytonPlacemark(kml);
 
 		improveBrytonData(kml, placemark, folder);

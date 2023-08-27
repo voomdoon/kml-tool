@@ -99,6 +99,24 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	}
 
 	/**
+	 * @since DOCME add inception version number
+	 */
+	@Test
+	void test_ignoreDone() throws Exception {
+		logTestStart();
+
+		run("kml/Bryton.kml");
+		String fileName = getTempDirectory() + "/file.kml";
+
+		CleanBrytonData.run(fileName);
+
+		Kml kml = KmlUtil.readKml(fileName);
+		Placemark actual = assumePlacemark(kml);
+
+		assertThat(actual).extracting(Placemark::getName).isEqualTo("2023-07-26T07:47:59Z");
+	}
+
+	/**
 	 * DOCME add JavaDoc for method test_name_startTime
 	 * 
 	 * @throws IOException

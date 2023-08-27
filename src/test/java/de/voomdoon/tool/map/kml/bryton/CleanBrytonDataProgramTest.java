@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 import de.voomdoon.testing.logging.tests.LoggingCheckingTestBase;
+import de.voomdoon.testing.tests.FileTestingUtil;
+import de.voomdoon.util.kml.KmlUtil;
 
 /**
  * DOCME add JavaDoc for
@@ -22,9 +24,29 @@ class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
 	 * @since DOCME add inception version number
 	 */
 	@Test
-	void test() throws IOException {
+	void test_directory() throws IOException {
 		logTestStart();
 
-		CleanBrytonDataTestUtil.run(fileName -> CleanBrytonDataProgram.main(new String[] { fileName }), getTempDirectory());
+		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", getTempDirectory() + "/1.kml");
+		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", getTempDirectory() + "/2.kml");
+
+		CleanBrytonDataProgram.main(new String[] { getTempDirectory().toString() });
+
+		CleanBrytonDataTestUtil.assertPlacemark(KmlUtil.readKml(getTempDirectory() + "/1.kml"));
+		CleanBrytonDataTestUtil.assertPlacemark(KmlUtil.readKml(getTempDirectory() + "/2.kml"));
+	}
+
+	/**
+	 * DOCME add JavaDoc for method test
+	 * 
+	 * @throws IOException
+	 * @since DOCME add inception version number
+	 */
+	@Test
+	void test_file() throws IOException {
+		logTestStart();
+
+		CleanBrytonDataTestUtil.run(fileName -> CleanBrytonDataProgram.main(new String[] { fileName }),
+				getTempDirectory());
 	}
 }
