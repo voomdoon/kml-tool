@@ -184,6 +184,19 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	}
 
 	/**
+	 * @since DOCME add inception version number
+	 */
+	@Test
+	void test_withWaypointsFolder() throws Exception {
+		logTestStart();
+
+		Kml kml = run("kml/Bryton/Folder_Waypoints.kml");
+		Placemark actual = assumePlacemark(kml);
+
+		assertThat(actual).extracting(Placemark::getName).isEqualTo("2023-07-26T07:47:59Z");
+	}
+
+	/**
 	 * DOCME add JavaDoc for method run
 	 * 
 	 * @param file

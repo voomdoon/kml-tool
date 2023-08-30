@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 import de.micromata.opengis.kml.v_2_2_0.Document;
+import de.micromata.opengis.kml.v_2_2_0.Feature;
 import de.micromata.opengis.kml.v_2_2_0.Folder;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.LineStyle;
@@ -56,13 +57,12 @@ public class CleanBrytonData {
 	/**
 	 * DOCME add JavaDoc for method getBrytonPlacemark
 	 * 
-	 * @param kml
+	 * @param folder
 	 * @return
 	 * @since 0.1.0
 	 */
-	private static Placemark getBrytonPlacemark(Kml kml) {
-		return (Placemark) ((Folder) ((Folder) ((Document) kml.getFeature()).getFeature().get(0)).getFeature().get(0))
-				.getFeature().get(0);
+	private static Placemark getBrytonPlacemark(Folder folder) {
+		return (Placemark) folder.getFeature().get(0);
 	}
 
 	/**
@@ -70,21 +70,20 @@ public class CleanBrytonData {
 	 * 
 	 * @param kml
 	 * @param placemark
-	 * @param folder
+	 * @param tracksSubFolder
 	 * @since 0.1.0
 	 */
-	private static void improveBrytonData(Kml kml, Placemark placemark, Folder folder) {
+	private static void improveBrytonData(Kml kml, Placemark placemark, Folder tracksSubFolder) {
 		Document document = (Document) kml.getFeature();
 
 		updateDocument(document);
-		updatePlacemark(placemark, folder);
+		updatePlacemark(placemark, tracksSubFolder);
 		document.setName(placemark.getName());
-		removeFolders(kml);
+		removeFolders(kml, tracksSubFolder);
 		setStyle(placemark, document);
 	}
 
 	/**
-	 * 
 	 * DOCME add JavaDoc for method moveTimeSpan
 	 * 
 	 * @param placemark
@@ -99,12 +98,12 @@ public class CleanBrytonData {
 	 * DOCME add JavaDoc for method removeFolders
 	 * 
 	 * @param kml
+	 * @param tracksSubFolder
 	 * @since 0.1.0
 	 */
-	private static void removeFolders(Kml kml) {
+	private static void removeFolders(Kml kml, Folder tracksSubFolder) {
 		Document document = (Document) kml.getFeature();
-		Placemark placemark = (Placemark) ((Folder) ((Folder) document.getFeature().get(0)).getFeature().get(0))
-				.getFeature().get(0);
+		Placemark placemark = (Placemark) tracksSubFolder.getFeature().get(0);
 		document.setFeature(Collections.singletonList(placemark));
 	}
 
@@ -123,10 +122,22 @@ public class CleanBrytonData {
 			return;
 		}
 
-		Folder folder = (Folder) ((Folder) document.getFeature().get(0)).getFeature().get(0);
-		Placemark placemark = getBrytonPlacemark(kml);
+		Folder tracksFolder = null;
 
-		improveBrytonData(kml, placemark, folder);
+		for (Feature feature : document.getFeature()) {
+			if (feature instanceof Folder f && feature.getName().equals("Tracks")) {
+				tracksFolder = f;
+			}
+		}
+
+		if (tracksFolder == null) {
+			throw new IllegalArgumentException("Failed to find 'Tracks' folder!");
+		}
+
+		Folder tracksSubFolder = (Folder) tracksFolder.getFeature().get(0);
+		Placemark placemark = getBrytonPlacemark(tracksSubFolder);
+
+		improveBrytonData(kml, placemark, tracksSubFolder);
 	}
 
 	/**
