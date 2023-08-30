@@ -49,7 +49,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_LookAt() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual).extracting(Document::getAbstractView).isNull();
@@ -63,7 +63,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_name() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual).extracting(Document::getName).isEqualTo("2023-07-26T07:47:59Z");
@@ -77,7 +77,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_snippet() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual).extracting(Document::getSnippetd).isNull();
@@ -91,7 +91,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Document_StyleSelector() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Document actual = (Document) kml.getFeature();
 
 		assertThat(actual.getStyleSelector()).hasSize(1);
@@ -105,7 +105,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_ignoreDone() throws Exception {
 		logTestStart();
 
-		run("kml/Bryton.kml");
+		run("kml/Bryton/default.kml");
 		String fileName = getTempDirectory() + "/file.kml";
 
 		CleanBrytonData.run(fileName);
@@ -127,7 +127,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_noFolders() throws IOException {
 		logTestStart();
 
-		Kml actual = run("kml/Bryton.kml");
+		Kml actual = run("kml/Bryton/default.kml");
 
 		CleanBrytonDataTestUtil.assertPlacemark(actual);
 	}
@@ -142,7 +142,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Placemark_name() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual).extracting(Placemark::getName).isEqualTo("2023-07-26T07:47:59Z");
@@ -158,7 +158,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Placemark_style() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual.getStyleUrl()).isEqualTo("#default-path");
@@ -175,7 +175,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	void test_Placemark_TimeSpan() throws IOException {
 		logTestStart();
 
-		Kml kml = run("kml/Bryton.kml");
+		Kml kml = run("kml/Bryton/default.kml");
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual.getTimePrimitive()).isInstanceOf(TimeSpan.class);

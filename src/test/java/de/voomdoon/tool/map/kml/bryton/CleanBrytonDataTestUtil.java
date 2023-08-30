@@ -64,7 +64,7 @@ public class CleanBrytonDataTestUtil {
 	 */
 	public static void run(BrytonCleanRunnable runnable, Path tempDirectory) throws IOException {
 		String fileName = tempDirectory + "/file.kml";
-		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", fileName);
+		FileTestingUtil.provideResourceAsFile("kml/Bryton/default.kml", fileName);
 
 		runnable.run(fileName);
 

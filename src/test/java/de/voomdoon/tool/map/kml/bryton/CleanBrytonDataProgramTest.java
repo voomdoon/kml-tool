@@ -27,8 +27,8 @@ class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
 	void test_directory() throws IOException {
 		logTestStart();
 
-		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", getTempDirectory() + "/1.kml");
-		FileTestingUtil.provideResourceAsFile("kml/Bryton.kml", getTempDirectory() + "/2.kml");
+		FileTestingUtil.provideResourceAsFile("kml/Bryton/default.kml", getTempDirectory() + "/1.kml");
+		FileTestingUtil.provideResourceAsFile("kml/Bryton/default.kml", getTempDirectory() + "/2.kml");
 
 		CleanBrytonDataProgram.main(new String[] { getTempDirectory().toString() });
 
