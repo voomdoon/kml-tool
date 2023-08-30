@@ -8,9 +8,11 @@ import de.micromata.opengis.kml.v_2_2_0.Feature;
 import de.micromata.opengis.kml.v_2_2_0.Folder;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.LineStyle;
+import de.micromata.opengis.kml.v_2_2_0.MultiGeometry;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Style;
 import de.micromata.opengis.kml.v_2_2_0.TimeSpan;
+import de.voomdoon.util.kml.GeometryUtil;
 import de.voomdoon.util.kml.KmlStyleUtil;
 import de.voomdoon.util.kml.KmlUtil;
 import lombok.experimental.UtilityClass;
@@ -175,6 +177,18 @@ public class CleanBrytonData {
 	}
 
 	/**
+	 * DOCME add JavaDoc for method updateGeometry
+	 * 
+	 * @param placemark
+	 * @since DOCME add inception version number
+	 */
+	private static void updateGeometry(Placemark placemark) {
+		if (placemark.getGeometry() instanceof MultiGeometry m) {
+			placemark.setGeometry(GeometryUtil.concatenateLineStrings(m));
+		}
+	}
+
+	/**
 	 * DOCME add JavaDoc for method updatePlacemark
 	 * 
 	 * @param placemark
@@ -185,5 +199,6 @@ public class CleanBrytonData {
 		moveTimeSpan(placemark, folder);
 		setName(placemark, folder);
 		placemark.setStyleUrl(null);
+		updateGeometry(placemark);
 	}
 }

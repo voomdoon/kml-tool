@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
+import de.micromata.opengis.kml.v_2_2_0.LineString;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.TimeSpan;
 import de.voomdoon.testing.logging.tests.LoggingCheckingTestBase;
@@ -114,6 +115,19 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual).extracting(Placemark::getName).isEqualTo("2023-07-26T07:47:59Z");
+	}
+
+	/**
+	 * @since DOCME add inception version number
+	 */
+	@Test
+	void test_MultiGeometry() throws Exception {
+		logTestStart();
+
+		Kml kml = run("kml/Bryton/MultiGeometry.kml");
+		Placemark actual = assumePlacemark(kml);
+
+		assertThat(actual).extracting(Placemark::getGeometry).isInstanceOf(LineString.class);
 	}
 
 	/**

@@ -2,15 +2,15 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
   <Document>
     <name>GPS device</name>
-    <snippet>Created Fri Aug 4 06:03:28 2023 GMT</snippet>
+    <snippet>Created Fri Aug 4 06:03:14 2023 GMT</snippet>
     <LookAt>
       <gx:TimeSpan>
-        <begin>2023-07-15T10:56:54Z</begin>
-        <end>2023-07-15T11:15:30Z</end>
+        <begin>2023-07-07T08:29:12Z</begin>
+        <end>2023-07-07T10:42:57Z</end>
       </gx:TimeSpan>
-      <longitude>4.357539</longitude>
-      <latitude>43.837610</latitude>
-      <range>1300.000000</range>
+      <longitude>7.387243</longitude>
+      <latitude>47.991294</latitude>
+      <range>26697.782319</range>
     </LookAt>
     <!-- Normal track style -->
     <Style id="track_n">
@@ -82,51 +82,46 @@
       </gx:SimpleArrayField>
     </Schema>
     <Folder>
-      <name>Waypoints</name>
-      <Placemark>
-        <name>LAP001</name>
-        <styleUrl>#waypoint</styleUrl>
-        <Point>
-          <coordinates>4.357790,43.837788</coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>LAP002</name>
-        <styleUrl>#waypoint</styleUrl>
-        <Point>
-          <coordinates>4.357260,43.837380</coordinates>
-        </Point>
-      </Placemark>
-    </Folder>
-	<Folder>
-		<name>Tracks</name>
-		<Folder>
-			<snippet></snippet>
-			<description><![CDATA[<table>
-<tr><td><b>Distance</b> 1.1 mi </td></tr>
-<tr><td><b>Min Alt</b> 537.402 ft </td></tr>
-<tr><td><b>Max Alt</b> 627.953 ft </td></tr>
+      <name>Tracks</name>
+      <Folder>
+        <snippet/>
+        <description>
+<![CDATA[<table>
+<tr><td><b>Distance</b> 14.5 mi </td></tr>
+<tr><td><b>Min Alt</b> 644.357 ft </td></tr>
+<tr><td><b>Max Alt</b> 750.656 ft </td></tr>
 <tr><td><b>Min Speed</b> 0.0 mph </td></tr>
-<tr><td><b>Max Speed</b> 13.4 mph </td></tr>
-<tr><td><b>Avg Speed</b> 2.8 mph </td></tr>
-<tr><td><b>Start Time</b>2023-07-26T07:47:59Z</td></tr>
-<tr><td><b>End Time</b>2023-07-26T08:11:43Z</td></tr>
-</table>]]></description>
-			<TimeSpan>
-				<begin>2023-07-26T07:47:59Z</begin>
-				<end>2023-07-26T08:11:43Z</end>
-			</TimeSpan>
-			<Placemark>
-				<name>Path</name>
-				<styleUrl>#lineStyle50</styleUrl>
-				<LineString>
-					<tessellate>1</tessellate>
-					<coordinates>
+<tr><td><b>Max Speed</b> 11.3 mph </td></tr>
+<tr><td><b>Avg Speed</b> 6.5 mph </td></tr>
+<tr><td><b>Start Time</b>2023-07-07T08:29:12Z</td></tr>
+<tr><td><b>End Time</b>2023-07-07T10:42:57Z</td></tr>
+</table>]]>
+</description>
+        <TimeSpan>
+          <begin>2023-07-07T08:29:12Z</begin>
+          <end>2023-07-07T10:42:57Z</end>
+        </TimeSpan>
+        <Placemark>
+          <name>Path</name>
+          <styleUrl>#lineStyle</styleUrl>
+          <MultiGeometry>
+            <LineString>
+              <tessellate>1</tessellate>
+              <coordinates>
 1.1,1.2,1
-2.1,2.2,2					</coordinates>
-				</LineString>
-			</Placemark>
-		</Folder>
-	</Folder>
+2.1,2.2,2
+</coordinates>
+            </LineString>
+            <LineString>
+              <tessellate>1</tessellate>
+              <coordinates>
+3.1,3.1,3
+4.1,4.1,4
+</coordinates>
+            </LineString>
+          </MultiGeometry>
+        </Placemark>
+      </Folder>
+    </Folder>
   </Document>
 </kml>
