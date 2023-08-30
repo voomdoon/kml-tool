@@ -62,7 +62,7 @@ public class CleanBrytonDataProgram {
 				// TODO write into temp file to not destroy it if interrupted in between
 			} catch (IOException e) {
 				// TODO implement error handling
-				throw new RuntimeException("Error at 'run': " + e.getMessage(), e);
+				throw new RuntimeException("Error at " + f + ": " + e.getMessage(), e);
 			} catch (RuntimeException e) {
 				throw new RuntimeException("Failed to run " + f + ": " + e.getMessage(), e);
 			}
