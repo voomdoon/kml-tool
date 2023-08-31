@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 
+import de.micromata.opengis.kml.v_2_2_0.Coordinate;
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.LineString;
@@ -100,7 +101,25 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	}
 
 	/**
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
+	 */
+	@Test
+	void test_Geometry_dupicateCoordinates() throws Exception {
+		logTestStart();
+
+		Kml kml = run("kml/Bryton/duplicateCoordinates.kml");
+		Placemark actual = assumePlacemark(kml);
+
+		assertThat(actual).extracting(Placemark::getGeometry).isInstanceOf(LineString.class);
+		LineString actualLineString = (LineString) actual.getGeometry();
+		assertThat(actualLineString).extracting(LineString::getCoordinates).asList().containsExactly(
+				new Coordinate(1.1, 1.2, 1), //
+				new Coordinate(2.1, 2.2, 2), //
+				new Coordinate(3.1, 3.2, 3));
+	}
+
+	/**
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_Geometry_MultiGeometryConcatenateLineString() throws Exception {
@@ -113,7 +132,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	}
 
 	/**
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_ignoreDone() throws Exception {
@@ -198,7 +217,7 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	}
 
 	/**
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_withWaypointsFolder() throws Exception {

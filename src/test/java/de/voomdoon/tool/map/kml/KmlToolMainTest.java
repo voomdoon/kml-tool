@@ -17,7 +17,7 @@ class KmlToolMainTest extends LoggingCheckingTestBase {
 	/**
 	 * DOCME add JavaDoc for method test_bryton_clean
 	 * 
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_bryton_clean() throws Exception {

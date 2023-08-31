@@ -17,7 +17,7 @@ import lombok.experimental.UtilityClass;
  *
  * @author André Schulz
  *
- * @since DOCME add inception version number
+ * @since 0.1.0
  */
 @UtilityClass
 public class CleanBrytonDataTestUtil {
@@ -27,7 +27,7 @@ public class CleanBrytonDataTestUtil {
 	 *
 	 * @author André Schulz
 	 *
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	public interface BrytonCleanRunnable {
 
@@ -36,7 +36,7 @@ public class CleanBrytonDataTestUtil {
 		 * 
 		 * @param fileName
 		 * @throws IOException
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		void run(String fileName) throws IOException;
 	}
@@ -60,7 +60,7 @@ public class CleanBrytonDataTestUtil {
 	 * @param runnable
 	 * @param tempDirectory
 	 * @throws IOException
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	public static void run(BrytonCleanRunnable runnable, Path tempDirectory) throws IOException {
 		String fileName = tempDirectory + "/file.kml";

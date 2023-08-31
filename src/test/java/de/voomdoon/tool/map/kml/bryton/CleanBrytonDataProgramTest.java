@@ -21,7 +21,7 @@ class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
 	 * DOCME add JavaDoc for method test
 	 * 
 	 * @throws IOException
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_directory() throws IOException {
@@ -40,7 +40,7 @@ class CleanBrytonDataProgramTest extends LoggingCheckingTestBase {
 	 * DOCME add JavaDoc for method test
 	 * 
 	 * @throws IOException
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_file() throws IOException {
