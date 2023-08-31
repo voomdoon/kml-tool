@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>GPS device</name>
+	<snippet>Created Fri Aug 4 06:03:45 2023 GMT</snippet>
+	<LookAt>
+		<gx:TimeSpan>
+			<begin>2023-07-26T07:47:59Z</begin>
+			<end>2023-07-26T08:11:43Z</end>
+		</gx:TimeSpan>
+		<longitude>1.963311</longitude>
+		<latitude>43.313682</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>1725.008981</range>
+	</LookAt>
+	<Style id="lineStyle4">
+		<LineStyle>
+			<color>ffffac59</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="lineStyle5">
+		<LineStyle>
+			<color>ffffac59</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="lineStyle50">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#lineStyle4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#lineStyle5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>Tracks</name>
+		<Folder>
+			<snippet></snippet>
+			<description><![CDATA[<table>
+<tr><td><b>Distance</b> 1.1 mi </td></tr>
+<tr><td><b>Min Alt</b> 537.402 ft </td></tr>
+<tr><td><b>Max Alt</b> 627.953 ft </td></tr>
+<tr><td><b>Min Speed</b> 0.0 mph </td></tr>
+<tr><td><b>Max Speed</b> 13.4 mph </td></tr>
+<tr><td><b>Avg Speed</b> 2.8 mph </td></tr>
+<tr><td><b>Start Time</b>2023-07-26T07:47:59Z</td></tr>
+<tr><td><b>End Time</b>2023-07-26T08:11:43Z</td></tr>
+</table>]]></description>
+			<TimeSpan>
+				<begin>2023-07-26T07:47:59Z</begin>
+				<end>2023-07-26T08:11:43Z</end>
+			</TimeSpan>
+			<Placemark>
+				<name>Path</name>
+				<styleUrl>#lineStyle50</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+1.1,1.2,1
+2.1,2.2,2
+2.1,2.2,2
+3.1,3.2,3					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>

@@ -7,6 +7,7 @@ import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Feature;
 import de.micromata.opengis.kml.v_2_2_0.Folder;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
+import de.micromata.opengis.kml.v_2_2_0.LineString;
 import de.micromata.opengis.kml.v_2_2_0.LineStyle;
 import de.micromata.opengis.kml.v_2_2_0.MultiGeometry;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
@@ -15,6 +16,7 @@ import de.micromata.opengis.kml.v_2_2_0.TimeSpan;
 import de.voomdoon.util.kml.GeometryUtil;
 import de.voomdoon.util.kml.KmlStyleUtil;
 import de.voomdoon.util.kml.KmlUtil;
+import de.voomdoon.util.kml.geometry.LineStringCleaner;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -32,6 +34,11 @@ public class CleanBrytonData {
 	 */
 	private static final Style DEFAULT_PATH_STYLE;
 
+	/**
+	 * @since 0.1.0
+	 */
+	private static final LineStringCleaner LINE_STRING_CLEANER;
+
 	static {
 		DEFAULT_PATH_STYLE = new Style();
 		DEFAULT_PATH_STYLE.setId("default-path");
@@ -39,6 +46,9 @@ public class CleanBrytonData {
 		lineStyle.setWidth(3);
 		lineStyle.setColor("ffffffff");
 		DEFAULT_PATH_STYLE.setLineStyle(lineStyle);
+
+		LINE_STRING_CLEANER = new LineStringCleaner();
+		LINE_STRING_CLEANER.setAltitudeThreshold(3);
 	}
 
 	/**
@@ -180,11 +190,15 @@ public class CleanBrytonData {
 	 * DOCME add JavaDoc for method updateGeometry
 	 * 
 	 * @param placemark
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	private static void updateGeometry(Placemark placemark) {
 		if (placemark.getGeometry() instanceof MultiGeometry m) {
 			placemark.setGeometry(GeometryUtil.concatenateLineStrings(m));
+		}
+
+		if (placemark.getGeometry() instanceof LineString lineString) {
+			LINE_STRING_CLEANER.clean(lineString);
 		}
 	}
 

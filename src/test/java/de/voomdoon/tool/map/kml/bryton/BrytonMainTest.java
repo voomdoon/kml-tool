@@ -11,7 +11,7 @@ import de.voomdoon.testing.logging.tests.LoggingCheckingTestBase;
  *
  * @author André Schulz
  *
- * @since DOCME add inception version number
+ * @since 0.1.0
  */
 class BrytonMainTest extends LoggingCheckingTestBase {
 
@@ -20,7 +20,7 @@ class BrytonMainTest extends LoggingCheckingTestBase {
 	 * 
 	 * @throws IOException
 	 * 
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Test
 	void test_clean() throws IOException {
