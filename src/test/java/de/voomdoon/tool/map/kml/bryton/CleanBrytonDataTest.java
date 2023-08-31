@@ -103,6 +103,19 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 	 * @since DOCME add inception version number
 	 */
 	@Test
+	void test_Geometry_MultiGeometryConcatenateLineString() throws Exception {
+		logTestStart();
+
+		Kml kml = run("kml/Bryton/MultiGeometry.kml");
+		Placemark actual = assumePlacemark(kml);
+
+		assertThat(actual).extracting(Placemark::getGeometry).isInstanceOf(LineString.class);
+	}
+
+	/**
+	 * @since DOCME add inception version number
+	 */
+	@Test
 	void test_ignoreDone() throws Exception {
 		logTestStart();
 
@@ -115,19 +128,6 @@ class CleanBrytonDataTest extends LoggingCheckingTestBase {
 		Placemark actual = assumePlacemark(kml);
 
 		assertThat(actual).extracting(Placemark::getName).isEqualTo("2023-07-26T07:47:59Z");
-	}
-
-	/**
-	 * @since DOCME add inception version number
-	 */
-	@Test
-	void test_MultiGeometry() throws Exception {
-		logTestStart();
-
-		Kml kml = run("kml/Bryton/MultiGeometry.kml");
-		Placemark actual = assumePlacemark(kml);
-
-		assertThat(actual).extracting(Placemark::getGeometry).isInstanceOf(LineString.class);
 	}
 
 	/**
